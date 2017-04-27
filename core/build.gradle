@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'witness'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 archivesBaseName = 'i2pbote'
 

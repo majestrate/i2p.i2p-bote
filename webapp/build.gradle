@@ -1,6 +1,7 @@
 apply plugin: 'war'
 apply plugin: 'witness'
 apply from: "${project.rootDir}/gradle/i2p-make-plugin.gradle"
+apply plugin: 'com.github.johnrengelman.shadow'
 
 archivesBaseName = 'i2pbote'
 
@@ -222,6 +223,7 @@ task generateMessagesJava << {
 }
 compileMessagesJava.dependsOn generateMessagesJava
 
+
 war {
     archiveName 'i2pbote.war'
     exclude '*.jsp'
@@ -264,4 +266,9 @@ i2p {
             }
         }
     }
+}
+
+shadowJar {
+    baseName = 'i2pbote-fat.jar'
+    configurations = [project.configurations.compile]
 }
